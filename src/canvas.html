@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="bignumber.min.js"></script>
+</head>
+
+<body>
+
+<canvas id="myCanvas" width="800" height="600" style="background: black;padding: 0;margin: 0;">
+</canvas>
+
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+var width = c.width;
+var height = c.height;
+
+var ctx = c.getContext("2d");
+var cData = ctx.getImageData(0, 0, width, height);
+
+kInt = new BigNumber ('10010100111011101100100100000100101010001111010001001010110010010100110010100100100101001100111011000000000000000000000');
+
+function fract (f) {
+	return f.minus (f.floor ());
+}
+
+function evalJosField (x,y) {
+	return Math.floor (fract (kInt.dividedBy ((new BigNumber (10)).toPower ((Math.floor(Math.abs(y))%7)*20.0 + Math.floor(Math.abs(x))%20)).times(0.1)).times(10)) * 
+		   (Math.abs (Math.sin(x*Math.PI)) + Math.abs(Math.sin (y*Math.PI))) * 0.5;
+}
+
+var Do3D = true;
+
+if ( Do3D ) {
+
+	function cross (x,y) {
+		return [x[1]*y[2] - x[2]*y[1],x[2]*y[0] - x[0]*y[2],x[0]*y[1] - x[1]*y[0]];
+	}
+
+	function dot (x,y) {
+		return x[0]*y[0] + x[1]*y[1] + x[2]*y[2];
+	}
+
+	function len (x) {
+		return Math.sqrt (x[0]*x[0] + x[1]*x[1] + x[2]*x[2]);
+	}
+
+	function normalize (x) {
+		var lx = len (x);
+		return [x[0]/lx,x[1]/lx,x[2]/lx];
+	}
+
+	function sub(x,y) {
+		return [x[0]-y[0],x[1]-y[1],x[2]-y[2]]
+	}
+
+	function flip(x) {
+		return [-x[0],-x[1],-x[2]];
+	}
+
+	function add(x,y) {
+		return [x[0]+y[0],x[1]+y[1],x[2]+y[2]]
+	}
+
+	function scale(x,y) {
+		return [x[0]*y,x[1]*y,x[2]*y];
+	}
+
+	function vec(x) {
+		return [x,x,x];
+	}
+
+	var eye_pos = scale (normalize (scale(add (add([1,0,0],[0,-1,0]),[0,0,1]),0.333333)),15); // A nice spot for the eye to start
+	var to_side = normalize(sub ([1,0,0],[0,-1,0])); // A nice side for the frustum plane
+	var to_up = normalize (cross (eye_pos,to_side));
+	var mid_screen = scale(normalize (eye_pos),len(eye_pos)-1.0);
+	var corner = sub (add (mid_screen,scale (to_up,0.5)),scale (to_side,0.375));
+	var to_down = flip (to_up);
+
+	eye_pos[0] -= 7; // Move the eye and the screen corner further into the field
+	eye_pos[1] += 7;
+	corner[0] -= 7;
+	corner[1] += 7;
+
+	for (i = 0;i != height;i++) {
+		for (j = 0;j != width;j++) {
+		
+			var pi = (i*width + j)*4;
+			
+			var cur_pixel = add (corner,add (scale(to_down,i/height),scale (to_side,j/width)));
+			var pix_dir = scale (sub (cur_pixel,eye_pos),0.1);
+			
+			if ( cur_pixel[2] > 1 && pix_dir[2] > 0 ) continue; // it's escaping to the sky
+			
+			for (k = 0;k != 1000;k++){
+				if ( cur_pixel[2] > 1.0 ) {
+					cur_pixel = add (cur_pixel,pix_dir);
+					continue; // keep going
+				}
+				var heightVal = evalJosField (cur_pixel[0],cur_pixel[1]);
+				if ( cur_pixel[2] < heightVal ) {
+					cData.data[pi] = heightVal*255;
+					cData.data[pi+1] = heightVal*255;
+					cData.data[pi+2] = heightVal*255;
+					cData.data[pi+3] = 255;
+					break;
+				}
+				cur_pixel = add (cur_pixel,pix_dir);
+			}
+		}
+	}
+	
+	ctx.putImageData( cData, 0, 0 );
+} else {
+	for (i = 0;i != height;i++) {
+		for (j = 0;j != width;j++) {
+			var pi = (i*width + j)*4;
+			
+			var x = (j-width*0.5)*0.1;
+			var y = (i-height*0.5)*0.1;
+			
+			var heightVal = Math.round (evalJosField (x,y)*255);
+			
+			cData.data[pi] = heightVal;
+			cData.data[pi+1] = heightVal;
+			cData.data[pi+2] = heightVal;
+			cData.data[pi+3] = 255;
+		}
+	}
+	
+	ctx.putImageData( cData, 0, 0 );
+	
+	ctx.fillStyle="rgba(255,0,0,1.0)"; // Draw principal axis
+	ctx.fillRect (0,height*0.5,width,2);
+	ctx.fillRect (width*0.5,0,2,height);
+}
+
+</script>
+
+</body>
+</html>
