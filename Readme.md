@@ -55,4 +55,6 @@ The `width` and `height` attributes on the `<canvas>` element in the HTML file d
 
 Enjoy!
 
+# Conclusions... ?
+
 ∎ I'm smart! ;)
