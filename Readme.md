@@ -17,17 +17,17 @@ And thus started our email chain...
 
 Initially I sent him the superformula link and he got back and introduced me to his old pal Jeff Tupper.
 
-![email1](http://toomuchvoltage.com/josfield/img/jos1.png)
+![email1](https://raw.githubusercontent.com/toomuchvoltage/josfield/master/img/jos1.png)
 
 I saw the formula and I thought... hey this looks neat. And what an interesting guy. Moreso, my brain went to work and I said to my self, `"hey I used to come up with neat crap like this back in high school... I'm pretty sure I can impress him"`
 
 So one night and many espressos later, I came up with what I called the `Jos Field`. To be honest coming up with this stuff is rather trivial. But it's neat and a nice exercise on the brain. So I got back to him with:
 
-![email2](http://toomuchvoltage.com/josfield/img/jos2.png)
+![email2](https://raw.githubusercontent.com/toomuchvoltage/josfield/master/img/jos2.png)
 
 For those interested here's the derivation:
 
-[derivation](http://toomuchvoltage.com/josfield/pdf/josfield_derivation.pdf)
+[derivation](https://github.com/toomuchvoltage/josfield/raw/master/pdf/josfield_derivation.pdf)
 
 As mentioned in the email this alternative has some interesting properties:
 
@@ -38,15 +38,15 @@ As mentioned in the email this alternative has some interesting properties:
 
 Some concessions from Jos ;):
 
-![email3](http://toomuchvoltage.com/josfield/img/jos3.png)
+![email3](https://raw.githubusercontent.com/toomuchvoltage/josfield/master/img/jos3.png)
 
 But I kept busting his ****s. I even did the gradient field:
 
-![email4](http://toomuchvoltage.com/josfield/img/jos4.png)
+![email4](https://raw.githubusercontent.com/toomuchvoltage/josfield/master/img/jos4.png)
 
 And if that wasn't enough, I even did a ray-marching 3D version of it.
 
-![email5](http://toomuchvoltage.com/josfield/img/jos5.png)
+![email5](https://raw.githubusercontent.com/toomuchvoltage/josfield/master/img/jos5.png)
 
 # `src` or it didn't happen...
 
