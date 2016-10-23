@@ -59,4 +59,4 @@ Enjoy!
 
 ∎ I'm smart! ;)
 
-![me and Jos](https://raw.githubusercontent.com/toomuchvoltage/josfield/master/img/IMG_0197.JPG)
+![me and Jos](https://raw.githubusercontent.com/toomuchvoltage/josfield/master/img/IMG_0197.png)
