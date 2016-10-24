@@ -5,11 +5,7 @@ Along the way I found an alternative to [Jeff Tupper's self-referential formula]
 # Background
 Some crazy day on March I was talking to Jos about wishing to maybe some day go and do a masters... but only on topics I'm interested in (e.g. real-time rendering or simulation.)
 
-And along the way Jos seemed to suggest that he was uncertain whether I was smart or not... because he was under the impression I had somehow schmoosed my way into Autodesk. Which is entirely untrue, I got interviewed by 5 people in a 4 hour period and most folks on that panel had already dug up my engine and knew what I was about. In fact, decision makers not on that panel had also looked into my work as well and were quite impressed.
-
-Hell, I had even showed Jos my work... but as I've learned, generally getting Jos to remember stuff or to stick to things is next to impossible.
-
-So me and Jos got into a bit of an argument over his suspicions. Because I felt a bit insulted and ignored. Then I asked him if he knew about the [Superformula](https://en.wikipedia.org/wiki/Superformula). And to my surprise, he hadn't heard of it in his life.
+And along the way Jos seemed to suggest that he was uncertain whether I was smart or not... which kinda got under my skin. Then I asked him if he knew about the [Superformula](https://en.wikipedia.org/wiki/Superformula). And to my surprise, he hadn't heard of it.
 
 And thus started our email chain...
 
